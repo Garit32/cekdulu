@@ -1,0 +1,800 @@
+/* =====================================================================
+   style-DarrenWangsawidjaja.css
+   Landing page responsif "CekDulu" (HTML + CSS, tanpa JavaScript)
+   Darren Wangsawidjaja - Sistem Informasi, BINUS
+
+   Isi berkas:
+   1.  Variabel warna, font, dan ukuran
+   2.  Reset ringan dan tipografi dasar
+   3.  Utilitas: container, sr-only, skip link, tombol
+   4.  Ganti bahasa EN/ID tanpa JavaScript
+   5.  Header dan navigasi
+   6.  Hero
+   7.  Fitur
+   8.  Cara kerja
+   9.  Tentang
+   10. Footer
+   11. Responsif: Tablet        (768px - 1023px)
+   12. Responsif: Desktop       (>= 1024px)
+   13. Responsif: Desktop lebar (>= 1280px)
+   14. Animasi (mengikuti preferensi "kurangi gerakan")
+
+   Pendekatan mobile-first (materi w3schools "Always Design for Mobile First"):
+   - Mobile        (<= 767px)   : gaya dasar bagian 1-10, berlaku tanpa media query
+   - Tablet        (768-1023px) : @media (min-width: 768px), bagian 11
+   - Desktop       (>= 1024px)  : @media (min-width: 1024px), bagian 12,
+                                  menimpa sebagian aturan tablet
+   - Desktop lebar (>= 1280px)  : @media (min-width: 1280px), bagian 13,
+                                  ukuran font dasar membesar sesuai lebar layar
+
+   Satuan ukuran memakai rem (1rem = ukuran font dasar, normalnya 16px).
+   Karena itu teks, jarak, ikon, dan lebar konten membesar bersama-sama
+   saat font dasar dinaikkan di layar lebar (bagian 13).
+   Layout: Grid untuk tata letak bagian halaman, Flexbox untuk menyusun
+   item (menu, tombol bahasa, tautan sosial). Tidak memakai float.
+   ===================================================================== */
+
+
+/* ---------- 1. Variabel warna, font, dan ukuran ---------- */
+:root {
+    --ink: #14213d;          /* biru tinta: teks utama dan latar footer */
+    --ink-soft: #55607a;     /* teks sekunder */
+    --paper: #ffffff;        /* latar putih */
+    --mist: #f2f5f3;         /* abu kehijauan untuk section berselang-seling */
+    --line: #d9e0dc;         /* garis dan border */
+    --leaf: #0b7a56;         /* hijau brand: lingkungan kerja yang sehat */
+    --leaf-dark: #08603f;    /* hijau saat hover */
+
+    /* Plus Jakarta Sans: huruf rancangan Tokotype (Indonesia) untuk program
+       +Jakarta City of Collaboration, cocok untuk produk bagi pekerja Indonesia */
+    --font: 'Plus Jakarta Sans', system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+
+    --radius: 1.25rem;
+    --pill: 999px;
+    --section-space: 4rem;   /* jarak atas-bawah section (64px), membesar di tablet/desktop */
+}
+
+
+/* ---------- 2. Reset ringan dan tipografi dasar ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-padding-top: 1rem;    /* jarak dari atas saat melompat ke section */
+}
+
+body {
+    margin: 0;
+    font-family: var(--font);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--paper);
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+p {
+    margin: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--leaf);
+}
+
+a:hover {
+    color: var(--leaf-dark);
+}
+
+/* Cincin fokus yang jelas untuk pengguna keyboard */
+:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
+}
+
+
+/* ---------- 3. Utilitas ---------- */
+/* Pembatas lebar konten: maksimal 70rem (1120px), sisa 1rem di kiri dan kanan */
+.container {
+    width: min(70rem, 100% - 2rem);
+    margin-inline: auto;
+}
+
+/* Tidak terlihat di layar, tetapi tetap dibacakan screen reader */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Tautan "Skip to content": tersembunyi di atas layar, turun saat difokus */
+.skip-link {
+    position: absolute;
+    top: -5rem;
+    left: 1rem;
+    z-index: 20;
+    padding: 0.625rem 1.125rem;
+    border-radius: 0.625rem;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 1rem;
+    color: #fff;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.25rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--pill);
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--leaf);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: var(--leaf-dark);
+    color: #fff;
+}
+
+
+/* ---------- 4. Ganti bahasa EN/ID tanpa JavaScript ----------
+   Radio #lang-en dan #lang-id di header menyimpan pilihan bahasa.
+   :has() memeriksa radio mana yang tercentang, lalu semua elemen
+   berbahasa lain disembunyikan. #lang-en diberi atribut "checked"
+   di HTML, jadi English tampil lebih dulu. */
+body:has(#lang-en:checked) [lang="id"],
+body:has(#lang-id:checked) [lang="en"] {
+    display: none;
+}
+
+/* Browser lama yang belum mendukung :has(): tampilkan English saja
+   dan sembunyikan tombol bahasa yang tidak akan berfungsi */
+@supports not selector(:has(*)) {
+    [lang="id"],
+    .lang-switch {
+        display: none;
+    }
+}
+
+
+/* ---------- 5. Header dan navigasi ---------- */
+.site-header {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+}
+
+/* Mobile: baris 1 = logo + pilihan bahasa, baris 2 = menu */
+.header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "logo lang"
+        "nav  nav";
+    align-items: center;
+    column-gap: 1rem;
+    padding-top: 0.75rem;
+}
+
+.logo {
+    grid-area: logo;
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 1.3125rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.logo img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.logo:hover {
+    color: var(--ink);
+}
+
+.site-nav {
+    grid-area: nav;
+    margin-top: 0.75rem;
+}
+
+.site-nav ul {
+    display: flex;
+    flex-direction: column;      /* mobile: menu ditumpuk vertikal */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.site-nav a {
+    display: block;
+    padding: 0.75rem 0;
+    border-top: 1px solid var(--line);
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.site-nav a:hover {
+    color: var(--leaf);
+}
+
+/* Pilihan bahasa berbentuk tombol pil [EN | ID] */
+.lang-switch {
+    grid-area: lang;
+    display: flex;
+    min-inline-size: 0;          /* hilangkan lebar minimum bawaan fieldset */
+    margin: 0;
+    padding: 0.1875rem;
+    border: 1px solid var(--line);
+    border-radius: var(--pill);
+}
+
+/* Radio disembunyikan secara visual, tetapi tetap bisa dipilih dengan keyboard */
+.lang-switch input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+}
+
+.lang-switch label {
+    padding: 0.375rem 0.875rem;
+    border-radius: var(--pill);
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch label:hover {
+    color: var(--ink);
+}
+
+.lang-switch input:checked + label {
+    background: var(--ink);
+    color: #fff;
+}
+
+.lang-switch input:focus-visible + label {
+    outline: 3px solid var(--leaf);
+    outline-offset: 2px;
+}
+
+
+/* ---------- 6. Hero ---------- */
+.hero {
+    padding-block: 2.5rem 3.5rem;
+    background: var(--mist);
+}
+
+/* Mobile: teks di atas, gambar di bawah */
+.hero-inner {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.hero h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+    max-width: 34em;
+    margin-top: 1rem;
+    font-size: 1.125rem;
+    color: var(--ink-soft);
+}
+
+.hero .btn {
+    width: 100%;                 /* mobile: tombol selebar layar */
+    margin-top: 1.75rem;
+}
+
+/* Grid menjadikan <picture> blok penuh tanpa celah di bawah gambar */
+.hero-media {
+    display: grid;
+    margin: 0;
+}
+
+.hero-media img {
+    width: 100%;
+}
+
+
+/* ---------- 7. Fitur ---------- */
+.features {
+    padding-block: var(--section-space);
+}
+
+.features h2,
+.how h2 {
+    margin-bottom: 2rem;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: 1fr;  /* mobile: satu kolom */
+    gap: 1rem;
+}
+
+.feature {
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--paper);
+}
+
+.feature img {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.feature h3 {
+    margin-bottom: 0.5rem;
+}
+
+.feature p {
+    color: var(--ink-soft);
+}
+
+
+/* ---------- 8. Cara kerja ---------- */
+.how {
+    padding-block: var(--section-space);
+    background: var(--mist);
+}
+
+.steps {
+    display: grid;
+    gap: 1.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: step;         /* nomor langkah dibuat oleh CSS */
+}
+
+/* Mobile dan tablet: garis waktu vertikal, nomor di kiri */
+.steps li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    align-content: start;        /* baris tidak ikut meregang saat tinggi kartu disamakan */
+    column-gap: 1rem;
+    counter-increment: step;
+}
+
+/* Lingkaran nomor langkah */
+.steps li::before {
+    content: counter(step);
+    grid-column: 1;
+    grid-row: 1;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--ink);
+    color: #fff;
+    font-weight: 800;
+}
+
+/* Garis penghubung ke langkah berikutnya */
+.steps li::after {
+    content: "";
+    grid-column: 1;
+    grid-row: 1 / 3;
+    justify-self: center;
+    width: 2px;
+    margin-top: 2.875rem;        /* mulai sedikit di bawah lingkaran (2.5rem + 0.375rem) */
+    margin-bottom: -1.375rem;    /* menyeberangi jarak 1.75rem, berhenti 0.375rem sebelum nomor berikutnya */
+    background: var(--line);
+}
+
+.steps li:last-child::after {
+    display: none;
+}
+
+/* Judul dan teks selalu di kolom kedua, di samping nomor */
+.steps h3,
+.steps p {
+    grid-column: 2;
+}
+
+.steps h3 {
+    align-self: center;
+}
+
+.steps p {
+    margin-top: 0.25rem;
+    color: var(--ink-soft);
+}
+
+
+/* ---------- 9. Tentang ---------- */
+.about {
+    padding-block: var(--section-space);
+}
+
+.about-inner {
+    display: grid;
+    gap: 1rem;
+}
+
+.about p {
+    max-width: 36em;
+    font-size: 1.125rem;
+}
+
+
+/* ---------- 10. Footer ---------- */
+.site-footer {
+    padding-block: 2.5rem;
+    background: var(--ink);
+    color: #c5cddc;
+}
+
+/* Mobile: brand, media sosial, lalu hak cipta, disusun ke bawah */
+.footer-inner {
+    display: grid;
+    grid-template-areas:
+        "brand"
+        "social"
+        "copy";
+    gap: 1.5rem;
+}
+
+.footer-brand {
+    grid-area: brand;
+}
+
+.site-footer .logo,
+.site-footer .logo:hover {
+    color: #fff;
+}
+
+.site-footer .logo img {
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+.footer-brand p {
+    margin-top: 0.5rem;
+}
+
+.social {
+    grid-area: social;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.social a {
+    display: inline-block;
+    padding: 0.5rem 1.125rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--pill);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.social a:hover {
+    background: #fff;
+    color: var(--ink);
+}
+
+.copyright {
+    grid-area: copy;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.875rem;
+}
+
+.site-footer :focus-visible {
+    outline-color: #fff;
+}
+
+
+/* =====================================================================
+   11. RESPONSIF: TABLET (768px - 1023px)
+   Aturan ini juga berlaku di desktop, lalu sebagian ditimpa bagian 12.
+   ===================================================================== */
+@media (min-width: 768px) {
+
+    :root {
+        --section-space: 5.5rem;
+    }
+
+    .container {
+        width: min(70rem, 100% - 4rem);
+    }
+
+    html {
+        scroll-padding-top: 6rem;    /* judul section tidak tertutup header sticky */
+    }
+
+    /* Header menempel di atas saat halaman digulir */
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(8px);
+    }
+
+    /* Logo, menu, dan pilihan bahasa dalam satu baris */
+    .header-inner {
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: "logo nav lang";
+        column-gap: 1.5rem;
+        padding-block: 0.875rem;
+    }
+
+    .site-nav {
+        justify-self: end;
+        margin-top: 0;
+    }
+
+    .site-nav ul {
+        flex-direction: row;         /* menu kembali horizontal */
+        gap: 0.25rem;
+    }
+
+    .site-nav a {
+        padding: 0.5rem 0.875rem;
+        border-top: 0;
+        border-radius: var(--pill);
+    }
+
+    .site-nav a:hover {
+        background: var(--mist);
+    }
+
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    h3 {
+        font-size: 1.3125rem;
+    }
+
+    /* Hero: satu kolom di tengah, lebar maksimal 42.5rem (680px) */
+    .hero {
+        padding-block: 4rem 5rem;
+    }
+
+    .hero-inner {
+        max-width: 42.5rem;
+        gap: 3rem;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3125rem;
+    }
+
+    .hero .btn {
+        width: auto;
+    }
+
+    /* Fitur: 2 kolom, kartu ketiga melebar penuh dengan ikon di kiri */
+    .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .feature:last-child {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 3.5rem 1fr;
+        column-gap: 1.25rem;
+    }
+
+    .feature:last-child img {
+        grid-row: 1 / 3;
+        margin-bottom: 0;
+    }
+
+    /* Cara kerja: tetap garis waktu vertikal, lebarnya dibatasi agar enak dibaca */
+    .steps {
+        max-width: 40rem;
+    }
+
+    .about p {
+        font-size: 1.3125rem;
+    }
+
+    /* Footer: brand di kiri, media sosial di kanan, hak cipta di bawah */
+    .footer-inner {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "brand social"
+            "copy  copy";
+        align-items: center;
+    }
+}
+
+
+/* =====================================================================
+   12. RESPONSIF: DESKTOP (>= 1024px)
+   ===================================================================== */
+@media (min-width: 1024px) {
+
+    :root {
+        --section-space: 7rem;
+    }
+
+    body {
+        font-size: 1.125rem;
+    }
+
+    /* Hero: dua kolom, teks di kiri dan gambar di kanan */
+    .hero {
+        padding-block: 5rem 6rem;
+    }
+
+    .hero-inner {
+        max-width: none;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+        align-items: center;
+        gap: 3.5rem;
+    }
+
+    .hero h1 {
+        font-size: 3.75rem;
+    }
+
+    /* Fitur: tiga kolom sejajar */
+    .feature-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+    }
+
+    .feature:last-child {
+        grid-column: auto;
+        display: block;
+    }
+
+    .feature:last-child img {
+        margin-bottom: 1.25rem;
+    }
+
+    /* Cara kerja: 4 langkah berjajar, garis horizontal menyambung nomor */
+    .steps {
+        max-width: none;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2rem;
+    }
+
+    .steps li {
+        row-gap: 1rem;
+    }
+
+    .steps h3,
+    .steps p {
+        grid-column: 1 / -1;
+    }
+
+    .steps h3 {
+        align-self: start;
+    }
+
+    .steps li::after {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+        justify-self: stretch;
+        width: auto;
+        height: 2px;
+        margin: 0 -1.625rem 0 -0.625rem;   /* mulai 0.375rem setelah lingkaran, berhenti 0.375rem sebelum nomor berikutnya */
+    }
+
+    /* Tentang: judul di kiri, paragraf di kanan */
+    .about-inner {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+        gap: 4rem;
+        align-items: start;
+    }
+}
+
+
+/* =====================================================================
+   13. RESPONSIF: DESKTOP LEBAR (>= 1280px)
+   Font dasar membesar mengikuti lebar layar: 16px di 1280px, 18px di
+   1920px, 20px di 2560px (QHD), dan berhenti di 24px. Karena semua ukuran
+   memakai rem, teks, jarak, ikon, dan lebar konten ikut membesar bersama,
+   sehingga halaman tidak tampak kecil di monitor lebar.
+   ===================================================================== */
+@media (min-width: 1280px) {
+
+    html {
+        font-size: clamp(1rem, 0.75rem + 0.3125vw, 1.5rem);
+    }
+}
+
+
+/* ---------- 14. Animasi ----------
+   Hanya satu animasi: gambar hero muncul perlahan saat halaman dibuka
+   (dan saat bahasa diganti). Tidak dijalankan bila pengguna memilih
+   "kurangi gerakan" di pengaturan sistem. */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .hero-media img {
+        animation: hero-in 0.8s ease-out both;
+    }
+}
+
+@keyframes hero-in {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}

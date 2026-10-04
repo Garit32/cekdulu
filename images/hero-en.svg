@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 520" width="640" height="520" font-family="'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif">
+<title>CekDulu checking a job post and a company's work environment</title>
+<defs>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+    <feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#14213D" flood-opacity="0.12"/>
+  </filter>
+  <symbol id="flag" viewBox="0 0 14 14">
+    <path d="M2.5 1v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M3.4 1.6h8.4l-2.1 3.3 2.1 3.3H3.4z" fill="currentColor"/>
+  </symbol>
+</defs>
+<g transform="rotate(-2.5 190 252)">
+<rect x="22" y="40" width="336" height="424" rx="22" fill="#fff" stroke="#D9E0DC" filter="url(#shadow)"/>
+<rect x="46" y="64" width="46" height="46" rx="12" fill="#EEF2F0"/>
+<path d="M60 100V76h18v24M56 100h26M64 82h3M71 82h3M64 88h3M71 88h3M64 94h3M71 94h3" fill="none" stroke="#55607A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="106" y="85" font-size="19" font-weight="700" fill="#14213D">Admin Staff</text>
+<text x="106" y="105" font-size="13" fill="#55607A">Example Company, Jakarta</text>
+<path d="M46 132H334" stroke="#E3E8E5" stroke-width="1.5"/>
+<text x="46" y="160" font-size="13" font-weight="600" fill="#55607A">Requirements</text>
+<circle cx="55" cy="187" r="3" fill="#9AA3B5"/>
+<text x="70" y="192" font-size="14" fill="#14213D">Full-time, Monday to Saturday</text>
+<circle cx="55" cy="223" r="3" fill="#9AA3B5"/>
+<text x="70" y="228" font-size="14" fill="#14213D">Competitive salary</text>
+<rect x="38" y="244" width="304" height="30" rx="9" fill="#FBE3E0"/>
+<use href="#flag" x="48" y="249" width="14" height="14" color="#C9372C"/>
+<text x="70" y="264" font-size="14" font-weight="600" fill="#A82B22">Diploma held until contract ends</text>
+<circle cx="55" cy="295" r="3" fill="#9AA3B5"/>
+<text x="70" y="300" font-size="14" fill="#14213D">Able to work under pressure</text>
+<rect x="38" y="316" width="304" height="30" rx="9" fill="#FBE3E0"/>
+<use href="#flag" x="48" y="321" width="14" height="14" color="#C9372C"/>
+<text x="70" y="336" font-size="14" font-weight="600" fill="#A82B22">Upfront fee of Rp1.5 million</text>
+<rect x="38" y="352" width="304" height="30" rx="9" fill="#FBE3E0"/>
+<use href="#flag" x="48" y="357" width="14" height="14" color="#C9372C"/>
+<text x="70" y="372" font-size="14" font-weight="600" fill="#A82B22">Overtime with no extra pay</text>
+<rect x="46" y="404" width="166" height="34" rx="17" fill="#C9372C"/>
+<use href="#flag" x="60" y="414" width="14" height="14" color="#fff"/>
+<text x="82" y="426" font-size="13.5" font-weight="700" fill="#fff">3 red flags found</text>
+</g>
+<rect x="334" y="116" width="290" height="376" rx="22" fill="#fff" stroke="#D9E0DC" filter="url(#shadow)"/>
+<text x="358" y="156" font-size="16" font-weight="700" fill="#14213D">Example Company</text>
+<text x="358" y="176" font-size="12.5" fill="#55607A">Work environment, 23 reviews</text>
+<polygon points="478.0,303.2 490.8,310.6 490.8,325.4 478.0,332.8 465.2,325.4 465.2,310.6" fill="none" stroke="#E3E8E5"/>
+<polygon points="478.0,288.4 503.6,303.2 503.6,332.8 478.0,347.6 452.4,332.8 452.4,303.2" fill="none" stroke="#E3E8E5"/>
+<polygon points="478.0,273.6 516.5,295.8 516.5,340.2 478.0,362.4 439.5,340.2 439.5,295.8" fill="none" stroke="#E3E8E5"/>
+<polygon points="478.0,258.8 529.3,288.4 529.3,347.6 478.0,377.2 426.7,347.6 426.7,288.4" fill="none" stroke="#E3E8E5"/>
+<polygon points="478.0,244.0 542.1,281.0 542.1,355.0 478.0,392.0 413.9,355.0 413.9,281.0" fill="none" stroke="#D9E0DC"/>
+<path d="M478.0 318.0L478.0 244.0" stroke="#E3E8E5"/>
+<path d="M478.0 318.0L542.1 281.0" stroke="#E3E8E5"/>
+<path d="M478.0 318.0L542.1 355.0" stroke="#E3E8E5"/>
+<path d="M478.0 318.0L478.0 392.0" stroke="#E3E8E5"/>
+<path d="M478.0 318.0L413.9 355.0" stroke="#E3E8E5"/>
+<path d="M478.0 318.0L413.9 281.0" stroke="#E3E8E5"/>
+<polygon points="478.0,288.4 521.6,292.8 507.5,335.0 478.0,363.9 428.0,346.9 454.9,304.7" fill="#14213D" fill-opacity="0.08" stroke="#14213D" stroke-width="1.8" stroke-linejoin="round"/>
+<circle cx="478.0" cy="288.4" r="5" fill="#C9372C" stroke="#fff" stroke-width="2"/>
+<circle cx="521.6" cy="292.8" r="5" fill="#E9A23B" stroke="#fff" stroke-width="2"/>
+<circle cx="507.5" cy="335.0" r="5" fill="#C9372C" stroke="#fff" stroke-width="2"/>
+<circle cx="478.0" cy="363.9" r="5" fill="#E9A23B" stroke="#fff" stroke-width="2"/>
+<circle cx="428.0" cy="346.9" r="5" fill="#0B7A56" stroke="#fff" stroke-width="2"/>
+<circle cx="454.9" cy="304.7" r="5" fill="#C9372C" stroke="#fff" stroke-width="2"/>
+<text x="478.0" y="216.0" text-anchor="middle" font-size="12" font-weight="600" fill="#55607A">Workload</text>
+<text x="478.0" y="231.0" text-anchor="middle" font-size="13" font-weight="700" fill="#A82B22">2.0</text>
+<text x="552.1" y="279.0" text-anchor="start" font-size="12" font-weight="600" fill="#55607A">Pay</text>
+<text x="552.1" y="294.0" text-anchor="start" font-size="13" font-weight="700" fill="#9A6510">3.4</text>
+<text x="552.1" y="353.0" text-anchor="start" font-size="12" font-weight="600" fill="#55607A">Managers</text>
+<text x="552.1" y="368.0" text-anchor="start" font-size="13" font-weight="700" fill="#A82B22">2.3</text>
+<text x="478.0" y="414.0" text-anchor="middle" font-size="12" font-weight="600" fill="#55607A">Culture</text>
+<text x="478.0" y="429.0" text-anchor="middle" font-size="13" font-weight="700" fill="#9A6510">3.1</text>
+<text x="403.9" y="353.0" text-anchor="end" font-size="12" font-weight="600" fill="#55607A">Career</text>
+<text x="403.9" y="368.0" text-anchor="end" font-size="13" font-weight="700" fill="#0B7A56">3.9</text>
+<text x="403.9" y="279.0" text-anchor="end" font-size="12" font-weight="600" fill="#55607A">Work-life</text>
+<text x="403.9" y="294.0" text-anchor="end" font-size="13" font-weight="700" fill="#A82B22">1.8</text>
+<rect x="358" y="442" width="162" height="30" rx="15" fill="#FDF1DC"/>
+<circle cx="374" cy="457" r="4.5" fill="#E9A23B"/>
+<text x="386" y="461.5" font-size="12.5" font-weight="600" fill="#9A6510">Confidence: medium</text>
+</svg>

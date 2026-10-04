@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Viewport: wajib agar halaman responsif di layar ponsel -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Darren Wangsawidjaja">
+    <meta name="description" content="CekDulu lets workers rate their workplaces so job seekers can check a company before they apply.">
+    <title>CekDulu | Check before you apply</title>
+    <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+
+    <!-- Font web: Plus Jakarta Sans (Google Fonts), fallback ke font sistem di CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS eksternal: seluruh tampilan diatur di file ini -->
+    <link rel="stylesheet" href="style-DarrenWangsawidjaja.css">
+</head>
+<body>
+
+    <!--
+        Catatan dwibahasa:
+        Setiap teks ditulis dua kali, <... lang="en"> dan <... lang="id">.
+        Pilihan EN/ID di header (radio button) menentukan bahasa yang tampil
+        lewat CSS, tanpa JavaScript. English tampil lebih dulu (default).
+    -->
+
+    <!-- Tautan lompat untuk pengguna keyboard, muncul saat ditekan Tab -->
+    <a class="skip-link" href="#main"><span lang="en">Skip to content</span><span lang="id">Langsung ke konten</span></a>
+
+    <!-- ========== HEADER: logo + menu navigasi + pilihan bahasa ========== -->
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+
+            <a class="logo" href="#top">
+                <img src="images/logo.svg" alt="" width="32" height="32">
+                <span>CekDulu</span>
+            </a>
+
+            <nav class="site-nav" aria-label="Main menu">
+                <ul>
+                    <li><a href="#features"><span lang="en">Features</span><span lang="id">Fitur</span></a></li>
+                    <li><a href="#how-it-works"><span lang="en">How it works</span><span lang="id">Cara kerja</span></a></li>
+                    <li><a href="#about"><span lang="en">About</span><span lang="id">Tentang</span></a></li>
+                </ul>
+            </nav>
+
+            <fieldset class="lang-switch">
+                <legend class="sr-only">Language / Bahasa</legend>
+                <input type="radio" name="lang" id="lang-en" value="en" aria-label="English" checked>
+                <label for="lang-en">EN</label>
+                <input type="radio" name="lang" id="lang-id" value="id" aria-label="Bahasa Indonesia">
+                <label for="lang-id">ID</label>
+            </fieldset>
+
+        </div>
+    </header>
+
+    <main id="main">
+
+        <!-- ========== HERO: judul + subjudul + tombol CTA + gambar ========== -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container hero-inner">
+
+                <div class="hero-text">
+                    <h1 id="hero-title">
+                        <span lang="en">Check the company before you apply.</span>
+                        <span lang="id">Cek dulu kantornya sebelum melamar.</span>
+                    </h1>
+                    <p class="hero-subtitle" lang="en">Read reviews from people who actually worked there, see how they rate workload, pay, and managers, and catch red flags in a job post before you send your CV.</p>
+                    <p class="hero-subtitle" lang="id">Baca ulasan dari orang yang benar-benar pernah bekerja di sana, lihat penilaian mereka soal beban kerja, gaji, dan atasan, lalu temukan red flag di lowongan sebelum kamu mengirim CV.</p>
+                    <a class="btn btn-primary" href="#features"><span lang="en">See what you can check</span><span lang="id">Lihat yang bisa kamu cek</span></a>
+                </div>
+
+                <!-- Gambar hero: di layar mobile (≤767px) dipakai versi yang hanya berisi kartu lowongan supaya teksnya tetap terbaca -->
+                <figure class="hero-media">
+                    <picture lang="en">
+                        <source media="(max-width: 767px)" srcset="images/hero-mobile-en.svg" width="376" height="470">
+                        <img src="images/hero-en.svg" width="640" height="520" alt="Illustration of CekDulu checking a job post and marking three red flags: a diploma held until the contract ends, an upfront fee of Rp1.5 million, and overtime with no extra pay.">
+                    </picture>
+                    <picture lang="id">
+                        <source media="(max-width: 767px)" srcset="images/hero-mobile-id.svg" width="376" height="470">
+                        <img src="images/hero-id.svg" width="640" height="520" alt="Ilustrasi CekDulu memeriksa lowongan kerja dan menandai tiga red flag: ijazah ditahan selama kontrak, biaya di awal Rp1,5 juta, dan lembur tanpa tambahan upah.">
+                    </picture>
+                </figure>
+
+            </div>
+        </section>
+
+        <!-- ========== FITUR: 3 item ========== -->
+        <section class="features" id="features" aria-labelledby="features-title">
+            <div class="container">
+                <h2 id="features-title"><span lang="en">What you can check</span><span lang="id">Yang bisa kamu cek</span></h2>
+
+                <div class="feature-grid">
+                    <!-- Ikon bersifat dekoratif (alt kosong) karena judul fitur sudah menjelaskan isinya -->
+                    <article class="feature">
+                        <img src="images/icon-reviews.svg" alt="" width="56" height="56">
+                        <h3><span lang="en">Verified, anonymous reviews</span><span lang="id">Ulasan anonim terverifikasi</span></h3>
+                        <p lang="en">Only people who actually worked at a company can review it, and their names are never shown. Reviews appear once a company has at least three, so no one can tell who wrote what.</p>
+                        <p lang="id">Hanya orang yang benar-benar pernah bekerja di sebuah perusahaan yang bisa mengulasnya, dan namanya tidak pernah ditampilkan. Ulasan baru muncul setelah ada minimal tiga, jadi tidak ada yang bisa menebak siapa menulis apa.</p>
+                    </article>
+
+                    <article class="feature">
+                        <img src="images/icon-radar.svg" alt="" width="56" height="56">
+                        <h3><span lang="en">Work environment radar</span><span lang="id">Radar lingkungan kerja</span></h3>
+                        <p lang="en">CekDulu reads every review aspect by aspect: workload, pay, managers, culture, career, and work-life balance. Each aspect gets a score, a short reason, and how confident that score is.</p>
+                        <p lang="id">CekDulu membaca setiap ulasan per aspek: beban kerja, gaji, atasan, budaya, karier, dan work-life balance. Setiap aspek mendapat skor, alasan singkat, dan seberapa yakin skor itu.</p>
+                    </article>
+
+                    <article class="feature">
+                        <img src="images/icon-redflag.svg" alt="" width="56" height="56">
+                        <h3><span lang="en">Job post check</span><span lang="id">Cek lowongan</span></h3>
+                        <p lang="en">Paste a job post and CekDulu marks the warning signs: a diploma held until the contract ends, fees before you start, pay below the regional minimum wage, or overtime with no extra pay.</p>
+                        <p lang="id">Tempel teks lowongan, lalu CekDulu menandai tanda bahayanya: ijazah ditahan sampai kontrak selesai, biaya sebelum mulai kerja, gaji di bawah UMK, atau lembur tanpa tambahan upah.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CARA KERJA: 4 langkah berurutan ========== -->
+        <section class="how" id="how-it-works" aria-labelledby="how-title">
+            <div class="container">
+                <h2 id="how-title"><span lang="en">How it works</span><span lang="id">Cara kerja</span></h2>
+
+                <ol class="steps">
+                    <li>
+                        <h3><span lang="en">Workers review</span><span lang="id">Pekerja menilai</span></h3>
+                        <p lang="en">People who worked there rate six aspects and describe what it was like.</p>
+                        <p lang="id">Orang yang pernah bekerja di sana menilai enam aspek dan menceritakan pengalamannya.</p>
+                    </li>
+                    <li>
+                        <h3><span lang="en">CekDulu scores</span><span lang="id">CekDulu menghitung</span></h3>
+                        <p lang="en">Star ratings are combined with what the review actually says. If the stars and the words disagree, a moderator takes a look.</p>
+                        <p lang="id">Bintang digabung dengan isi ulasan. Kalau bintang dan isinya bertentangan, moderator akan memeriksanya.</p>
+                    </li>
+                    <li>
+                        <h3><span lang="en">You decide</span><span lang="id">Kamu memutuskan</span></h3>
+                        <p lang="en">Compare companies and check job posts before you apply.</p>
+                        <p lang="id">Bandingkan perusahaan dan cek lowongan sebelum melamar.</p>
+                    </li>
+                    <li>
+                        <h3><span lang="en">Companies respond</span><span lang="id">Perusahaan menanggapi</span></h3>
+                        <p lang="en">Companies can reply to reviews and show what they have fixed. Fixes confirmed by employees earn an “Improving” badge.</p>
+                        <p lang="id">Perusahaan bisa membalas ulasan dan menunjukkan apa yang sudah diperbaiki. Perbaikan yang dikonfirmasi karyawan mendapat badge “Membaik”.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ========== TENTANG: paragraf singkat ========== -->
+        <section class="about" id="about" aria-labelledby="about-title">
+            <div class="container about-inner">
+                <h2 id="about-title"><span lang="en">About CekDulu</span><span lang="id">Tentang CekDulu</span></h2>
+                <p lang="en">CekDulu, Indonesian for “check first”, helps job seekers avoid toxic workplaces by letting workers rate the places they work. It is built around <a href="https://sdgs.un.org/goals/goal8" target="_blank" rel="noopener noreferrer">SDG 8</a>, target 8.8: safe and secure working environments for all workers. Fresh graduates and interns come first, because they have the least information and the most to lose from a bad first job.</p>
+                <p lang="id">CekDulu membantu pencari kerja menghindari kantor yang toxic dengan mengajak pekerja menilai tempat kerjanya. CekDulu dibangun untuk <a href="https://sdgs.un.org/goals/goal8" target="_blank" rel="noopener noreferrer">SDG 8</a>, target 8.8: lingkungan kerja yang aman dan terlindungi bagi semua pekerja. Fresh graduate dan anak magang menjadi fokus pertama, karena merekalah yang paling sedikit punya informasi dan paling dirugikan oleh pekerjaan pertama yang buruk.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER: hak cipta + media sosial ========== -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+
+            <div class="footer-brand">
+                <a class="logo" href="#top">
+                    <img src="images/logo.svg" alt="" width="28" height="28">
+                    <span>CekDulu</span>
+                </a>
+                <p><span lang="en">Check before you apply.</span><span lang="id">Cek dulu sebelum melamar.</span></p>
+            </div>
+
+            <ul class="social" aria-label="Social media">
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+            </ul>
+
+            <p class="copyright">&copy; 2026 CekDulu. <span lang="en">All rights reserved.</span><span lang="id">Hak cipta dilindungi.</span></p>
+
+        </div>
+    </footer>
+
+</body>
+</html>
